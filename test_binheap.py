@@ -14,6 +14,9 @@ class TestMaxHeap(unittest.TestCase):
         self.assertEqual(b.insert(10).list, [10,2])
         self.assertEqual(b.insert(18).list, [18,2,10])
         self.assertEqual(b.insert(1).list, [18,2,10,1])
+        self.assertEqual(b.insert(9).list, [18,9,10,1,2])
+        self.assertEqual(b.insert(7).list, [18,9,10,1,2,7])
+        self.assertEqual(b.insert(19).list, [19,9,18,1,2,7,10])
 
     def test_extract(self):
         b = MaxHeap([30, 25, 6, 23, 3, 5, 4, 7])
