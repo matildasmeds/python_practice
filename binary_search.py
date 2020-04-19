@@ -1,14 +1,14 @@
 import math
 
 def main():
-    def get_mid_point(j, i):
+    def get_offset(j, i):
         return int(math.floor((j-i) / 2))
 
     def binary_search(arr, t):
 
         i = 0  # Beginning of subarray
         j = len(arr)  # End of subarray
-        k = get_mid_point(j, i)  # midpoint
+        k = get_offset(j, i)  # Initial midpoint
         print(f"Begin with i: {i}, j: {j}, k: {k}")
         while (True):
             print(f"Sub-array: {arr[i:j]}")
@@ -27,14 +27,12 @@ def main():
                 return k
             if arr[k] > t:
                 j = k
-                k -= get_mid_point(j, i)
+                k -= get_offset(j, i)
                 print(f"Process left half with i: {i}, j: {j}, and k: {k}")
-                # process left (sub)half
             else:
                 i = k
-                k += get_mid_point(j, 1)
+                k += get_offset(j, i)
                 print(f"Process right half with i: {i}, j: {j}, and k: {k}")
-                # process right (sub)half
 
 
     # Jotakin satunnaisia testicaseja
@@ -68,6 +66,9 @@ def main():
     assert(binary_search([], 42) == None)
     assert(binary_search([1], 42) == None)
     assert(binary_search([1], 1) == 0)
+
+    arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    assert(binary_search(arr, 8) == 7)
 
 if __name__ == "__main__":
     main()
